@@ -29,9 +29,9 @@ public class QuartoController {
     public ResponseEntity<QuartoResponse> addQuartoNovo(
              @RequestParam("foto") MultipartFile foto,
              @RequestParam("tipoQuarto") String tipoQuarto,
-             @RequestParam("precoSala") BigDecimal precoSala) throws SQLException, IOException {
+             @RequestParam("precoSala") BigDecimal precoQuarto) throws SQLException, IOException {
 
-        Quarto quartoSalvo = quartoService.addQuartoNovo(foto, tipoQuarto, precoSala);
+        Quarto quartoSalvo = quartoService.addQuartoNovo(foto, tipoQuarto, precoQuarto);
         QuartoResponse response = new QuartoResponse(quartoSalvo.getId(), quartoSalvo.getTipoQuarto(),
                 quartoSalvo.getPrecoQuarto());
 
