@@ -5,7 +5,6 @@ import com.hotelbooking.hotel.service.QuartoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,13 +28,13 @@ public class QuartoController {
     public ResponseEntity<QuartoResponse> addQuartoNovo(
              @RequestParam("foto") MultipartFile foto,
              @RequestParam("tipoQuarto") String tipoQuarto,
-             @RequestParam("precoSala") BigDecimal precoQuarto) throws SQLException, IOException {
+             @RequestParam("precoQuarto") BigDecimal precoQuarto) throws SQLException, IOException {
 
         Quarto quartoSalvo = quartoService.addQuartoNovo(foto, tipoQuarto, precoQuarto);
         QuartoResponse response = new QuartoResponse(quartoSalvo.getId(), quartoSalvo.getTipoQuarto(),
                 quartoSalvo.getPrecoQuarto());
 
         return ResponseEntity.ok(response);
-    };
+    }
 
 }
