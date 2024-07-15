@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
 import java.sql.Blob;
@@ -27,7 +28,7 @@ public class Quarto {
     private List<Reserva> listaReservas;
 
     @Lob
-    private Blob photo;
+    private byte[] photo;
 
     public Quarto() {
         this.listaReservas = new ArrayList<>();

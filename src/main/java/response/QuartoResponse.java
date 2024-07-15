@@ -11,22 +11,22 @@ import java.util.List;
 @NoArgsConstructor
 public class QuartoResponse {
     private Long id;
-    private String tipoSala;
-    private BigDecimal precoSala;
+    private String tipoQuarto;
+    private BigDecimal precoQuarto;
     private boolean isReservada;
     private String foto;
     private List<ReservaResponse> reservas;
 
-    public QuartoResponse(Long id, String tipoSala, BigDecimal precoSala) {
+    public QuartoResponse(Long id, String tipoQuarto, BigDecimal precoQuarto) {
         this.id = id;
-        this.tipoSala = tipoSala;
-        this.precoSala = precoSala;
+        this.tipoQuarto = tipoQuarto;
+        this.precoQuarto = precoQuarto;
     }
 
-    public QuartoResponse(Long id, String tipoSala, BigDecimal precoSala, boolean isReservada, byte[] photoByte, List<ReservaResponse> reservas) {
+    public QuartoResponse(Long id, String tipoQuarto, BigDecimal precoQuarto, boolean isReservada, byte[] photoByte, List<ReservaResponse> reservas) {
         this.id = id;
-        this.tipoSala = tipoSala;
-        this.precoSala = precoSala;
+        this.tipoQuarto = tipoQuarto;
+        this.precoQuarto = precoQuarto;
         this.isReservada = isReservada;
         this.foto = photoByte != null ? Base64.encodeBase64String(photoByte) : null;
         this.reservas = reservas;
