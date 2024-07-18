@@ -92,12 +92,10 @@ public class QuartoController {
 
     @GetMapping("/quarto/{quartoId}")
     public ResponseEntity<QuartoResponse> getQuarto(@PathVariable("quartoId") Long id) {
-        Optional<Quarto> quarto = quartoService.getQuartoByQuartoId(id);
-        if(quarto.isPresent()){
-            QuartoResponse quartoResponse = new QuartoResponse(quarto.get().getId(),
-                    quarto.get().getTipoQuarto(),
-                    quarto.get().getPrecoQuarto()
-                    );
+        Optional<Quarto> quartoSalvo = quartoService.getQuartoByQuartoId(id);
+        if(quartoSalvo.isPresent()){
+            Quarto quarto = quartoSalvo.get();
+            QuartoResponse quartoResponse = Quarto.toQuartoResponse(quarto);
             return ResponseEntity.ok(quartoResponse);
         }
         return null;
