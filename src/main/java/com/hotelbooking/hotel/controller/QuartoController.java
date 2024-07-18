@@ -22,6 +22,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin("http://localhost:5173")
@@ -89,10 +90,36 @@ public class QuartoController {
         return ResponseEntity.ok(quartoResponses);
     }
 
+    @GetMapping("/quarto/{quartoId}")
+    public ResponseEntity<QuartoResponse> getQuarto(@PathVariable("quartoId") Long id) {
+        Optional<Quarto> quarto = quartoService.getQuartoByQuartoId(id);
+        if(quarto.isPresent()){
+            QuartoResponse quartoResponse = new QuartoResponse(quarto.get().getId(),
+                    quarto.get().getTipoQuarto(),
+                    quarto.get().getPrecoQuarto()
+                    );
+            return ResponseEntity.ok(quartoResponse);
+        }
+        return null;
+    }
+
     @DeleteMapping("/deletar/quarto/{quartoId}")
     public ResponseEntity<Void> deletarQuarto(@PathVariable("quartoId") Long id) {
         quartoService.deletarQuarto(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    public ResponseEntity<QuartoResponse> atualizaQuarto(@PathVariable("quartoId") Long id,
+                                                         @RequestParam(required = false) String tipoQuarto,
+                                                         @RequestParam(required = false) String precoQuarto,
+                                                         @RequestParam(required = false) MultipartFile foto) throws SQLException, IOException {
+    byte[] photoBytes = foto != null && !foto.isEmpty() ?
+            foto.getBytes() : quartoService.getFotoQuartoByQuartoId(id);
+        Quarto quarto = quartoService.atualizaQuarto(id, tipoQuarto, precoQuarto, photoBytes);
+        quarto.setPhoto(photoBytes);
+
+        QuartoResponse quartoResponse = Quarto.toQuartoResponse(quarto);
+        return ResponseEntity.ok(quartoResponse);
     }
 }
 

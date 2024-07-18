@@ -21,7 +21,7 @@ public class ReservaResponse {
     private int numeroCriancas;
     private int numeroTotalHospedes;
     private String codigoConfirmacaoReserva;
-    private Quarto sala;
+    private Quarto quarto;
 
     public ReservaResponse(Long idReserva, LocalDate dataCheckIn, LocalDate dataCheckOut, String codigoConfirmacaoReserva) {
         this.idReserva = idReserva;

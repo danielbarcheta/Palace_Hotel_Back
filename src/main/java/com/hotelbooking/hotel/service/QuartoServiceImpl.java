@@ -80,4 +80,28 @@ public class QuartoServiceImpl implements QuartoService {
             quartoRepository.deleteById(quartoId);
         }
     }
+
+    @Override
+    public Optional<Quarto> getQuartoByQuartoId(Long id) {
+        return quartoRepository.findById(id);
+    }
+
+    @Override
+    public Quarto atualizaQuarto(Long id, String tipoQuarto, String precoQuarto, byte[] photoBytes) {
+        Optional<Quarto> quarto = quartoRepository.findById(id);
+        if(quarto.isEmpty()) {
+            throw new ResourceNotFoundException("Quarto nao encontrado");
+        }
+        if(tipoQuarto!=null) {
+            quarto.get().setTipoQuarto(tipoQuarto);
+        }
+        if(precoQuarto!=null) {
+            quarto.get().setPrecoQuarto(new BigDecimal(precoQuarto));
+        }
+        if(photoBytes!=null && photoBytes.length > 0) {
+            quarto.get().setPhoto(photoBytes);
+        }
+        return quartoRepository.save(quarto.get());
+    }
+
 }

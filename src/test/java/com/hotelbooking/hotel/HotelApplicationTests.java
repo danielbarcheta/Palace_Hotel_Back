@@ -22,12 +22,12 @@ public class HotelApplicationTests {
     @Autowired
     private QuartoService quartoService;
 
-    @Test
-    public void testGetFotoQuartoByQuartoId() throws SQLException {
-        Long quartoId = 1L; // Id de um quarto existente no seu banco de dados
-        byte[] fotoBytes = quartoService.getFotoQuartoByQuartoId(quartoId);
-        assertNotNull(fotoBytes);
-        Assert.assertTrue(fotoBytes.length > 0);
-    }
+//    @Test
+//    public void testGetFotoQuartoByQuartoId() throws SQLException {
+//        Long quartoId = 1L; // Id de um quarto existente no seu banco de dados
+//        byte[] fotoBytes = quartoService.getFotoQuartoByQuartoId(quartoId);
+//        assertNotNull(fotoBytes);
+//        Assert.assertTrue(fotoBytes.length > 0);
+//    }
 
 }

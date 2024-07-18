@@ -2,6 +2,7 @@ package com.hotelbooking.hotel.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import response.ReservaResponse;
 
 import java.time.LocalDate;
 @Entity
@@ -58,5 +59,20 @@ public class Reserva {
 
     public Long getIdReserva() {
         return idReserva;
+    }
+
+    public static ReservaResponse toReservaResponse(Reserva reserva) {
+        return new ReservaResponse(
+                reserva.getIdReserva(),
+                reserva.getDataCheckIn(),
+                reserva.getDataCheckOut(),
+                reserva.getNomeCompletoHospede(),
+                reserva.getEmailHospede(),
+                reserva.getNumeroAdultos(),
+                reserva.getNumeroCriancas(),
+                reserva.getNumeroTotalHospedes(),
+                reserva.getCodigoConfirmacaoReserva(),
+                reserva.getQuarto()
+        );
     }
 }
