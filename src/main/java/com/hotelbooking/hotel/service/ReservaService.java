@@ -7,4 +7,5 @@ import java.util.List;
 public interface ReservaService {
 
     List<Reserva> getAllReservasByQuartoId(Long id);
+    List<Reserva> getAllReservas();
 }

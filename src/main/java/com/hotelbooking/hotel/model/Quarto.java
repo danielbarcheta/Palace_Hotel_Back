@@ -26,7 +26,7 @@ public class Quarto {
 
     private String tipoQuarto;
     private BigDecimal precoQuarto;
-    private Boolean isReservada;
+    private Boolean isReservada = false;
     @OneToMany(mappedBy = "quarto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Reserva> listaReservas;
 

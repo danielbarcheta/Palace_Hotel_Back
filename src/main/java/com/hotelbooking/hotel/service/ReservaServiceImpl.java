@@ -21,4 +21,8 @@ public class ReservaServiceImpl implements ReservaService {
     public List<Reserva> getAllReservasByQuartoId(Long id) {
         return this.reservaRepository.findByQuartoId(id);
     }
+
+    public List<Reserva> getAllReservas() {
+        return this.reservaRepository.findAll();
+    }
 }
