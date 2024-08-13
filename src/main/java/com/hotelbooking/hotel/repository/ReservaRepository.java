@@ -11,4 +11,5 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
     List<Reserva> findByQuartoId(Long quartoId);
 
+    Reserva findByCodigoConfirmacao(String codigoConfirmacao);
 }

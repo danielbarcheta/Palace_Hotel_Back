@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaServiceImpl implements ReservaService {
@@ -25,4 +26,21 @@ public class ReservaServiceImpl implements ReservaService {
     public List<Reserva> getAllReservas() {
         return this.reservaRepository.findAll();
     }
+
+    @Override
+    public Optional<Reserva> getReservaById(Long id) {
+        return reservaRepository.findById(id);
+    }
+
+    @Override
+    public Reserva salvarReserva(Long quartoId, Reserva reserva) {
+        return reservaRepository.save(reserva);
+    }
+
+    @Override
+    public Reserva findByCodigoConfirmacao(String codigoConfirmacao) {
+        return reservaRepository.findByCodigoConfirmacao(codigoConfirmacao);
+    }
+
+
 }
