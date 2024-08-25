@@ -10,8 +10,7 @@ public interface ReservaService {
     List<Reserva> getAllReservasByQuartoId(Long id);
     List<Reserva> getAllReservas();
     Optional<Reserva> getReservaById(Long id);
-
-    Reserva salvarReserva(Reserva reserva);
-
+    String salvarReserva(Long quartoId, Reserva reserva);
+    Boolean excluirReserva(Long reservaId);
     Reserva findByCodigoConfirmacao(String codigoConfirmacao);
 }
