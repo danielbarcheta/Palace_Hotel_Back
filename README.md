@@ -33,20 +33,7 @@ spring.jpa.show-sql: Se true, exibe as instruções SQL no console.
 Inicializar o Banco de Dados
 Certifique-se de que o PostgreSQL esteja em execução e que o banco de dados especificado exista. Se necessário, crie o banco de dados antes de iniciar o aplicativo.
 
-Configuração do CORS
-A configuração está definida para permissão em todas as portas. Caso ache necessário, basta acessar as classes de controle e editar conforme necessário.
-
-Execução
-Uma alternativa para executar o projeto é usar o comando:
-
-sh
-Copiar código
-mvn spring-boot:run
-na pasta do projeto.
-
-perl
-Copiar código
-
-Você pode copiar e colar o código acima no seu arquivo README.md no GitHub. Isso garantirá que o texto seja formatado corretamente e de forma legível.
+## Execução
+Uma alternativa para executar o projeto é executar o comando mvn spring-boot:run na pasta do projeto
 
 
