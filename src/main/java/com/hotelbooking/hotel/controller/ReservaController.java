@@ -7,7 +7,6 @@ import com.hotelbooking.hotel.model.Reserva;
 import com.hotelbooking.hotel.service.QuartoService;
 import com.hotelbooking.hotel.service.ReservaService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +38,7 @@ public class ReservaController {
         return ResponseEntity.ok(reservaResponses);
     }
 
-    @GetMapping("/reserva/{codigoConfirmacao}")
+    @GetMapping("/confirmacao/{codigoConfirmacao}")
     public ResponseEntity<?> getReservaByCodigoConfirmacao (@PathVariable String codigoConfirmacao) {
         try {
             Reserva reserva = reservaService.findByCodigoConfirmacao(codigoConfirmacao);
@@ -66,7 +65,7 @@ public class ReservaController {
         }
     }
 
-    @DeleteMapping("/{reservaId}")
+    @DeleteMapping("/reserva/{reservaId}/deletar")
     public ResponseEntity<String> excluirReserva(@PathVariable Long reservaId) {
         boolean excluida = reservaService.excluirReserva(reservaId);
         if (excluida) {
